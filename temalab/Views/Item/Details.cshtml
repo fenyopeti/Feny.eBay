@@ -1,0 +1,65 @@
+﻿@model temalab.Models.Item
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>
+    @Html.DisplayFor(model => model.Name)
+</h2>
+
+<div>
+    <h4>
+        @Html.DisplayFor(model => model.Category.Name)
+    </h4>
+    <hr />
+
+    <div class="col-md-4">
+        <p>
+            <img src="@Url.Content(Model.DefaultPic)" class="img-responsive" alt=@Model.Name />
+        </p>
+    </div>
+    <div class="col-xl-2">
+        <dl class="dl-horizontal">
+            @*<dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>*@
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BiggestTip)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BiggestTip) Ft
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.End)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.End)
+            </dd>
+
+        </dl>
+    </div>
+
+
+</div>
+<p>
+    @if (ViewBag.User == "Owner")
+    {
+        <a class="btn btn-default" href="/Item/Edit/@Model.ID">Edit &raquo;</a>
+    }
+    @if (ViewBag.User == "Buyer")
+    {
+        <a class="btn btn-default" href="/Item/Bid/@Model.ID">Bid &raquo;</a>
+    }
+</p>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
